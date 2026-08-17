@@ -1,0 +1,842 @@
+/* ==========================================================================
+   Claymorphic RFID Access Control Suite - Design System & Layout
+   Zero Glassmorphism | Bright Tactile Clay 3D Aesthetic | Crisp UI
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  /* Clay Color Palette */
+  --clay-bg: #EAEFF5;
+  --clay-card-bg: #EAEFF5;
+  --clay-surface-white: #FFFFFF;
+  
+  /* Accent Colors */
+  --clay-primary: #5C67F2;      /* Deep Soft Blue */
+  --clay-primary-light: #7E87FA;
+  --clay-secondary: #FF6B6B;    /* Warm Coral Red */
+  --clay-success: #2EC4B6;      /* Vibrant Mint */
+  --clay-warning: #FF9F1C;      /* Warm Amber Yellow */
+  --clay-purple: #9D4EDD;       /* Royal Clay Purple */
+  --clay-dark: #2B2D42;         /* Dark Navy Slate */
+  --clay-muted: #8D99AE;        /* Muted Gray Blue */
+
+  /* Clay Dual Shadows (3D Pillowy Effect) */
+  --clay-shadow-out: 8px 8px 16px #C5CBD3, -8px -8px 16px #FFFFFF;
+  --clay-shadow-out-sm: 4px 4px 10px #C5CBD3, -4px -4px 10px #FFFFFF;
+  --clay-shadow-out-lg: 14px 14px 28px #BAC1CC, -14px -14px 28px #FFFFFF;
+  
+  --clay-shadow-in: inset 4px 4px 8px #C5CBD3, inset -4px -4px 8px #FFFFFF;
+  --clay-shadow-in-sm: inset 2px 2px 5px #C5CBD3, inset -2px -2px 5px #FFFFFF;
+  
+  /* Pressed Clay Shadow */
+  --clay-shadow-pressed: inset 5px 5px 10px #C5CBD3, inset -5px -5px 10px #FFFFFF;
+
+  /* Accent Colored Clay Shadows */
+  --clay-shadow-primary: 6px 6px 14px rgba(92, 103, 242, 0.4), inset -3px -3px 6px rgba(0, 0, 0, 0.2), inset 3px 3px 6px rgba(255, 255, 255, 0.5);
+  --clay-shadow-secondary: 6px 6px 14px rgba(255, 107, 107, 0.4), inset -3px -3px 6px rgba(0, 0, 0, 0.2), inset 3px 3px 6px rgba(255, 255, 255, 0.5);
+  --clay-shadow-success: 6px 6px 14px rgba(46, 196, 182, 0.4), inset -3px -3px 6px rgba(0, 0, 0, 0.2), inset 3px 3px 6px rgba(255, 255, 255, 0.5);
+  --clay-shadow-warning: 6px 6px 14px rgba(255, 159, 28, 0.4), inset -3px -3px 6px rgba(0, 0, 0, 0.2), inset 3px 3px 6px rgba(255, 255, 255, 0.5);
+
+  --border-radius-lg: 24px;
+  --border-radius-md: 16px;
+  --border-radius-sm: 10px;
+  --border-radius-pill: 50px;
+
+  --font-main: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--clay-bg);
+  color: var(--clay-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* App Window Shell */
+.app-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--clay-bg);
+  overflow: hidden;
+}
+
+/* Header Navbar */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background-color: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-out-sm);
+  z-index: 10;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--clay-primary);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--clay-shadow-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+}
+
+.brand-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.brand-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--clay-dark);
+  letter-spacing: -0.5px;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--clay-muted);
+}
+
+/* Header Controls & Status */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ip-connect-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--clay-card-bg);
+  padding: 4px 8px;
+  border-radius: var(--border-radius-pill);
+  box-shadow: var(--clay-shadow-in-sm);
+}
+
+.clay-input-sm {
+  border: none;
+  outline: none;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 700;
+  background: transparent;
+  padding: 4px 8px;
+  color: var(--clay-dark);
+  width: 145px;
+}
+
+.ip-divider {
+  width: 1px;
+  height: 16px;
+  background-color: var(--clay-muted);
+  opacity: 0.4;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-in-sm);
+  border-radius: var(--border-radius-pill);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--clay-muted);
+}
+
+.status-dot.online {
+  background-color: var(--clay-success);
+  box-shadow: 0 0 8px var(--clay-success);
+}
+
+.status-dot.locked {
+  background-color: var(--clay-secondary);
+  box-shadow: 0 0 8px var(--clay-secondary);
+}
+
+/* Clay Buttons */
+.clay-btn {
+  border: none;
+  outline: none;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-out-sm);
+  color: var(--clay-dark);
+}
+
+.clay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--clay-shadow-out);
+}
+
+.clay-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: var(--clay-shadow-pressed);
+}
+
+.clay-btn-primary {
+  background: var(--clay-primary);
+  color: #FFF;
+  box-shadow: var(--clay-shadow-primary);
+}
+
+.clay-btn-secondary {
+  background: var(--clay-secondary);
+  color: #FFF;
+  box-shadow: var(--clay-shadow-secondary);
+}
+
+.clay-btn-success {
+  background: var(--clay-success);
+  color: #FFF;
+  box-shadow: var(--clay-shadow-success);
+}
+
+.clay-btn-warning {
+  background: var(--clay-warning);
+  color: #FFF;
+  box-shadow: var(--clay-shadow-warning);
+}
+
+/* App Main Body Layout */
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Clay Sidebar Navigation */
+.app-sidebar {
+  width: 220px;
+  background: var(--clay-card-bg);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--clay-shadow-out-sm);
+  z-index: 5;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--border-radius-md);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--clay-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.nav-item svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.nav-item:hover {
+  color: var(--clay-dark);
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateX(3px);
+}
+
+.nav-item.active {
+  color: var(--clay-primary);
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-in);
+}
+
+/* App Content Area */
+.app-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tab-pane {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tab-pane.active {
+  display: flex;
+}
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid-main-side {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* Clay Card Panel */
+.clay-card {
+  background: var(--clay-card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--clay-shadow-out);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.clay-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(197, 203, 211, 0.4);
+  padding-bottom: 10px;
+}
+
+.clay-card-title {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--clay-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clay-card-title svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--clay-primary);
+}
+
+/* Door & Hardware Simulator Components */
+.door-simulator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-in);
+  border-radius: var(--border-radius-lg);
+  position: relative;
+  min-height: 280px;
+  perspective: 800px;
+}
+
+.door-frame {
+  width: 180px;
+  height: 230px;
+  background: #D5DCE4;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--clay-shadow-in);
+  padding: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.door-panel {
+  width: 100%;
+  height: 100%;
+  background: var(--clay-primary);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--clay-shadow-primary);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  position: relative;
+}
+
+.door-panel.opened {
+  transform: rotateY(-75deg);
+  box-shadow: -10px 10px 20px rgba(0,0,0,0.15);
+}
+
+.door-handle {
+  width: 20px;
+  height: 20px;
+  background: var(--clay-warning);
+  border-radius: 50%;
+  box-shadow: var(--clay-shadow-warning);
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.solenoid-lock-indicator {
+  position: absolute;
+  right: 6px;
+  top: 45%;
+  width: 14px;
+  height: 32px;
+  background: var(--clay-secondary);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--clay-secondary);
+}
+
+.solenoid-lock-indicator.unlocked {
+  background: var(--clay-success);
+  right: -6px;
+  box-shadow: 0 0 10px var(--clay-success);
+}
+
+/* Footstep Sensor Controls */
+.footstep-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-in);
+  border-radius: var(--border-radius-md);
+}
+
+.range-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.range-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+input[type="range"].clay-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: var(--border-radius-pill);
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-in-sm);
+  outline: none;
+}
+
+input[type="range"].clay-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--clay-primary);
+  box-shadow: var(--clay-shadow-primary);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"].clay-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* RFID Reader & Interactive Cards */
+.rfid-scanner-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-in);
+  border-radius: var(--border-radius-md);
+  border: 3px dashed var(--clay-muted);
+  gap: 10px;
+  min-height: 140px;
+  transition: all 0.3s ease;
+}
+
+.rfid-scanner-pad.active {
+  border-color: var(--clay-success);
+  background: rgba(46, 196, 182, 0.08);
+}
+
+.rfid-cards-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.clay-rfid-card {
+  padding: 12px;
+  border-radius: var(--border-radius-md);
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-out-sm);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.clay-rfid-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--clay-shadow-out);
+}
+
+.clay-rfid-card.auth {
+  border-color: var(--clay-success);
+}
+
+.clay-rfid-card.unauth {
+  border-color: var(--clay-secondary);
+}
+
+.card-owner {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--clay-dark);
+}
+
+.card-uid {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--clay-muted);
+}
+
+.card-tag {
+  font-size: 9px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: var(--border-radius-pill);
+  align-self: flex-start;
+  text-transform: uppercase;
+}
+
+.tag-auth {
+  background: var(--clay-success);
+  color: #FFF;
+}
+
+.tag-unauth {
+  background: var(--clay-secondary);
+  color: #FFF;
+}
+
+/* Terminal & Console */
+.terminal-window {
+  background: #1E1E2E;
+  color: #CDD6F4;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 14px;
+  border-radius: var(--border-radius-md);
+  height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.5);
+  line-height: 1.5;
+}
+
+.log-line {
+  word-break: break-all;
+}
+
+.log-init { color: #89B4FA; }
+.log-footstep { color: #F9E2AF; }
+.log-rfid { color: #CBA6F7; }
+.log-relay { color: #A6E3A1; }
+.log-error { color: #F38BA8; }
+
+/* Whitelist Table */
+.clay-table-container {
+  overflow-x: auto;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--clay-shadow-in-sm);
+  background: var(--clay-card-bg);
+}
+
+.clay-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+.clay-table th {
+  background: var(--clay-card-bg);
+  padding: 12px 16px;
+  font-weight: 900;
+  color: var(--clay-muted);
+  border-bottom: 2px solid rgba(197, 203, 211, 0.6);
+}
+
+.clay-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(197, 203, 211, 0.3);
+  font-weight: 700;
+}
+
+.clay-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Inputs & Modals */
+.clay-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--border-radius-md);
+  border: none;
+  outline: none;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--clay-card-bg);
+  box-shadow: var(--clay-shadow-in);
+  color: var(--clay-dark);
+}
+
+.clay-input:focus {
+  box-shadow: var(--clay-shadow-in), 0 0 0 3px var(--clay-primary);
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--clay-dark);
+}
+
+/* Canvas Chart */
+.chart-container {
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Code Editor Window */
+.code-editor {
+  background: #181825;
+  color: #CDD6F4;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 14px;
+  border-radius: var(--border-radius-md);
+  height: 380px;
+  overflow: auto;
+  white-space: pre;
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.6);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(43, 45, 66, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  width: 420px;
+  background: var(--clay-card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--clay-shadow-out-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .grid-2, .grid-3, .grid-main-side {
+    grid-template-columns: 1fr;
+  }
+  .app-sidebar {
+    width: 70px;
+  }
+  .nav-text {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   ESP32-CAM Live Video Stream Component
+   ========================================================================== */
+.cam-stream-container {
+  width: 100%;
+  height: 240px;
+  background: #11111b;
+  border-radius: var(--border-radius-md);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset 4px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.cam-stream-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cam-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.cam-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-pill);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  box-shadow: var(--clay-shadow-out-sm);
+  transition: all 0.2s ease;
+}
+
+.cam-status-pill.online {
+  background: rgba(46, 196, 182, 0.15);
+  color: var(--clay-success);
+  border: 1px solid var(--clay-success);
+}
+
+.cam-status-pill.offline {
+  background: rgba(255, 107, 107, 0.15);
+  color: var(--clay-secondary);
+  border: 1px solid var(--clay-secondary);
+}
+
+.cam-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.cam-status-pill.online .cam-dot {
+  background: var(--clay-success);
+  box-shadow: 0 0 8px var(--clay-success);
+  animation: pulseLive 1.5s infinite;
+}
+
+.cam-status-pill.offline .cam-dot {
+  background: var(--clay-secondary);
+}
+
+.cam-overlay-info {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  background: rgba(17, 17, 27, 0.75);
+  backdrop-filter: blur(4px);
+  color: #CDD6F4;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulseLive {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
